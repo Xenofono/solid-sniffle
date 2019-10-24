@@ -2,7 +2,6 @@ package com.sti.project.projekt;
 
 import com.sti.project.projekt.entities.BlogEntity;
 import com.sti.project.projekt.repositories.BlogRepository;
-import io.r2dbc.spi.Clob;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
