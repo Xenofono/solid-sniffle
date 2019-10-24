@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.BaseStream;
@@ -24,9 +25,10 @@ import java.util.stream.BaseStream;
 @SpringBootApplication
 public class ProjektApplication {
 
-    private List<BlogEntity> exampleBlogs = List.of(new BlogEntity(null, "Kristoffer Näsström", generateLargeString(), LocalDateTime.now()),
-            new BlogEntity(null, "Kristoffer Näsström", generateLargeString(), LocalDateTime.now()),
-            new BlogEntity(null, "Kristoffer Näsström", generateLargeString(), LocalDateTime.now()));
+    private List<BlogEntity> exampleBlogs = List.of(
+            new BlogEntity(null, "Kristoffer Näsström", generateLargeString(), LocalDateTime.of(2010, Month.JANUARY, 14, 13, 22)),
+            new BlogEntity(null, "Kalle Anka", generateLargeString(), LocalDateTime.now()),
+            new BlogEntity(null, "Gunde Svan", generateLargeString(), LocalDateTime.of(1987, Month.OCTOBER, 14, 13, 22)));
 
     public static void main(String[] args) {
         SpringApplication.run(ProjektApplication.class, args);
@@ -40,17 +42,16 @@ public class ProjektApplication {
                 .doOnSuccess(count -> log.info("Schema created, rows updated: {}", count))
                 .then(repository.deleteAll())
                 .doOnSuccess(v -> log.info("Repository cleared"))
-                .thenMany(getPeople())
+                .thenMany(getBlogs())
                 .flatMap(repository::save)
                 .subscribe(person -> log.info("Person saved: {}", person));
     }
 
     private Mono<Integer> executeSql(DatabaseClient client, String sql) {
         return client.execute(sql).fetch().rowsUpdated();
-        //return client.execute().sql(sql).fetch().rowsUpdated();
     }
 
-    private Flux<BlogEntity> getPeople() {
+    private Flux<BlogEntity> getBlogs() {
         return Flux.fromIterable(exampleBlogs);
     }
 
