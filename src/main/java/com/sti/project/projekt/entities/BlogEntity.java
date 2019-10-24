@@ -1,25 +1,26 @@
-package com.sti.project.projekt.model;
+package com.sti.project.projekt.entities;
 
 
+import io.r2dbc.spi.Clob;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BlogModel {
+public class BlogEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     private String creator;
 
-    @Lob
     private String content;
+    @CreatedDate
     private LocalDateTime created;
 }
