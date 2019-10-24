@@ -1,6 +1,6 @@
 package com.sti.project.projekt;
 
-import com.sti.project.projekt.model.BlogModel;
+import com.sti.project.projekt.entities.BlogEntity;
 import com.sti.project.projekt.repositories.BlogRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -18,9 +18,9 @@ public class DataInitializer implements CommandLineRunner {
         this.blogRepository = blogRepository;
     }
 
-    private List<BlogModel> exampleBlogs = List.of(new BlogModel(null, "Kristoffer Näsström", generateLargeString(), LocalDateTime.now()),
-            new BlogModel(null, "Kristoffer Näsström", generateLargeString(), LocalDateTime.now()),
-            new BlogModel(null, "Kristoffer Näsström", generateLargeString(), LocalDateTime.now()));
+    private List<BlogEntity> exampleBlogs = List.of(new BlogEntity(null, "Kristoffer Näsström", generateLargeString(), LocalDateTime.now()),
+            new BlogEntity(null, "Kristoffer Näsström", generateLargeString(), LocalDateTime.now()),
+            new BlogEntity(null, "Kristoffer Näsström", generateLargeString(), LocalDateTime.now()));
 
     @Override
     public void run(String... args) throws Exception {

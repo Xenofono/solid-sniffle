@@ -1,7 +1,7 @@
 package com.sti.project.projekt.repositories;
 
-import com.sti.project.projekt.model.BlogModel;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.sti.project.projekt.entities.BlogEntity;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 
-public interface BlogRepository extends JpaRepository<BlogModel, Long> {
+public interface BlogRepository extends ReactiveCrudRepository<BlogEntity, Long> {
 }

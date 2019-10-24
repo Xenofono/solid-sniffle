@@ -1,4 +1,4 @@
-package com.sti.project.projekt.model;
+package com.sti.project.projekt.entities;
 
 
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BlogModel {
+public class BlogEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
