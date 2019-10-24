@@ -3,11 +3,13 @@ package com.sti.project.projekt;
 import com.sti.project.projekt.model.BlogModel;
 import com.sti.project.projekt.repositories.BlogRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+@Component
 public class DataInitializer implements CommandLineRunner {
 
     private BlogRepository blogRepository;
@@ -22,7 +24,10 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        exampleBlogs.forEach(blogRepository::save);
+        exampleBlogs.forEach(blog -> {
+            System.out.println("saving: " + blog);
+            blogRepository.save(blog);
+        });
     }
 
     private String generateLargeString() {
