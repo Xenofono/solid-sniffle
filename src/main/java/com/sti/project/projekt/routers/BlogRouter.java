@@ -18,7 +18,8 @@ public class BlogRouter {
 
     @Bean
     public RouterFunction<ServerResponse> blogFluxRouter(BlogHandler blogHandler) {
-        return RouterFunctions.route(GET("/all").and(accept(MediaType.APPLICATION_JSON)), blogHandler::getAllBlogPosts);
+        return RouterFunctions.route(GET("/").and(accept(MediaType.APPLICATION_JSON)), blogHandler::getAllBlogPosts)
+                .andRoute(GET("/{id}").and(accept(MediaType.APPLICATION_JSON)), blogHandler::getBlogById);
     }
 
 
