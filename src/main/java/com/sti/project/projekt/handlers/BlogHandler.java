@@ -34,4 +34,18 @@ public class BlogHandler {
                 .body(allResponses, BlogModelResponse.class)
                 .switchIfEmpty(NOT_FOUND);
     }
+
+    public Mono<ServerResponse> getBlogById(ServerRequest request) {
+        Long id = Long.parseLong(request.pathVariable("id"));
+        Mono<BlogModelResponse> blog = blogRepository.findById(id).map(entity -> {
+            BlogModelResponse response = new BlogModelResponse();
+            BeanUtils.copyProperties(entity, response);
+            return response;
+        });
+
+        return ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(blog, BlogModelResponse.class)
+                .switchIfEmpty(NOT_FOUND);
+    }
 }
