@@ -1,5 +1,7 @@
 package com.sti.project.projekt.handlers;
 
+import com.sti.project.projekt.entities.BlogEntity;
+import com.sti.project.projekt.model.request.BlogModelRequest;
 import com.sti.project.projekt.model.response.BlogModelResponse;
 import com.sti.project.projekt.repositories.BlogRepository;
 import org.springframework.beans.BeanUtils;
@@ -9,6 +11,8 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.time.LocalDateTime;
 
 @Component
 public class BlogHandler {
@@ -47,5 +51,46 @@ public class BlogHandler {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(blog, BlogModelResponse.class)
                 .switchIfEmpty(NOT_FOUND);
+    }
+
+    public Mono<ServerResponse> createNewBlog(ServerRequest request) {
+        Mono<BlogEntity> newEntity = request.bodyToMono(BlogEntity.class);
+
+        return newEntity.flatMap(savedItem -> {
+            savedItem.setCreated(LocalDateTime.now());
+            return ServerResponse.ok()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(blogRepository.save(savedItem), BlogEntity.class)
+                    .switchIfEmpty(NOT_FOUND);
+        });
+
+    }
+
+    public Mono<ServerResponse> deleteBlogById(ServerRequest request) {
+        Long id = Long.parseLong(request.pathVariable("id"));
+        Mono<Void> deletedBlog = blogRepository.deleteById(id);
+
+        return ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(deletedBlog, Void.class);
+
+    }
+
+    public Mono<ServerResponse> updateById(ServerRequest request) {
+        Long id = Long.parseLong(request.pathVariable("id"));
+
+        Mono<BlogModelRequest> newBlogDetails = request.bodyToMono(BlogModelRequest.class);
+
+          Mono<BlogEntity> updatedBlog = newBlogDetails.flatMap(newItem -> blogRepository.findById(id).flatMap(oldItem -> {
+            oldItem.setCreator(newItem.getCreator());
+            oldItem.setContent(newItem.getContent());
+            return blogRepository.save(oldItem);
+        }));
+        return updatedBlog.flatMap(blog -> ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .bodyValue(blog))
+                .switchIfEmpty(NOT_FOUND);
+
+
     }
 }
