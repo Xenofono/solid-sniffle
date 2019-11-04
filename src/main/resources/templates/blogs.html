@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <title>Kristoffers blog</title>
     <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
-    <h2 class="title">Kristoffers blogprojekt</h2>
+    <h1 class="title">Kristoffers bloggprojekt</h1>
 </header>
 <section id="main-content">
     <div th:each="blogpost: ${blogs}" class="content-div">
         <h1 th:text="${blogpost.title}"></h1>
         <p th:text="${blogpost.content}"></p>
-        <span th:text="${blogpost.creator}"></span>
+        <em><span th:text="${blogpost.creator}" id="author"></span></em>
         <span th:text="${blogpost.created}"></span>
 
     </div>
