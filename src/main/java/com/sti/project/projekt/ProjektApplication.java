@@ -19,6 +19,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.BaseStream;
@@ -56,7 +57,11 @@ public class ProjektApplication {
     }
 
     private Flux<BlogEntity> getBlogs() {
-        return Flux.fromIterable(exampleBlogs);
+        List<BlogEntity> dummyBlogs = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            dummyBlogs.add(new BlogEntity(null, lorem.getName(), lorem.getTitle(5), lorem.getWords(500), LocalDateTime.now()));
+        }
+        return Flux.fromIterable(dummyBlogs);
     }
 
     private Mono<String> getSchema() throws URISyntaxException {
