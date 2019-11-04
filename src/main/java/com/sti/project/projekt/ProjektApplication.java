@@ -44,7 +44,7 @@ public class ProjektApplication {
                 .doOnSuccess(v -> log.info("Repository cleared"))
                 .thenMany(getBlogs())
                 .flatMap(repository::save)
-                .subscribe(blog -> log.info("Blog saved: {}", blog));
+                .subscribe(person -> log.info("Blog saved: {}", person));
     }
 
     private Mono<Integer> executeSql(DatabaseClient client, String sql) {

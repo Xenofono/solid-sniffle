@@ -7,6 +7,7 @@ import com.sti.project.projekt.repositories.BlogRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
@@ -41,16 +42,18 @@ public class BlogHandler {
 
     public Mono<ServerResponse> getBlogById(ServerRequest request) {
         Long id = Long.parseLong(request.pathVariable("id"));
-        Mono<BlogModelResponse> blog = blogRepository.findById(id).map(entity -> {
+        System.out.println("HOHOHPO");
+        return blogRepository.findById(id).flatMap(entity -> {
             BlogModelResponse response = new BlogModelResponse();
             BeanUtils.copyProperties(entity, response);
-            return response;
-        });
+            System.out.println(response);
+            return ServerResponse.ok()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(BodyInserters.fromValue(response));
 
-        return ServerResponse.ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(blog, BlogModelResponse.class)
-                .switchIfEmpty(NOT_FOUND);
+        }).switchIfEmpty(NOT_FOUND);
+
+
     }
 
     public Mono<ServerResponse> createNewBlog(ServerRequest request) {
@@ -60,9 +63,9 @@ public class BlogHandler {
             savedItem.setCreated(LocalDateTime.now());
             return ServerResponse.ok()
                     .contentType(MediaType.APPLICATION_JSON)
-                    .body(blogRepository.save(savedItem), BlogEntity.class)
-                    .switchIfEmpty(NOT_FOUND);
-        });
+                    .body(blogRepository.save(savedItem), BlogEntity.class);
+
+        }).switchIfEmpty(NOT_FOUND);
 
     }
 
@@ -81,7 +84,7 @@ public class BlogHandler {
 
         Mono<BlogModelRequest> newBlogDetails = request.bodyToMono(BlogModelRequest.class);
 
-          Mono<BlogEntity> updatedBlog = newBlogDetails.flatMap(newItem -> blogRepository.findById(id).flatMap(oldItem -> {
+        Mono<BlogEntity> updatedBlog = newBlogDetails.flatMap(newItem -> blogRepository.findById(id).flatMap(oldItem -> {
             oldItem.setCreator(newItem.getCreator());
             oldItem.setContent(newItem.getContent());
             return blogRepository.save(oldItem);
