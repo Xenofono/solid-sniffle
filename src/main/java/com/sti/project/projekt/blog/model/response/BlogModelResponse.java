@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 public class BlogModelResponse {
 
     private String creator;
+    private String title;
     private String content;
     private LocalDateTime created;
 }

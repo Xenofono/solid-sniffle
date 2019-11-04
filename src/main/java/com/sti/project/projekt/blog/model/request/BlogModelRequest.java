@@ -14,6 +14,8 @@ public class BlogModelRequest {
     @Size(min = 2, message = "Name must be longer than 2")
     private String creator;
     @NotNull
+    private String title;
+    @NotNull
     private String content;
     private LocalDateTime created;
 

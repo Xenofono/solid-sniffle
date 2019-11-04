@@ -6,13 +6,20 @@
     <link th:href="@{/css/styles.css}" rel="stylesheet">
 </head>
 <body>
-<h2 class="title">Kristoffers blogprojekt</h2>
-<div th:each="blogpost: ${blogs}" class="content-div">
-    <h1 th:text="${blogpost.creator}"></h1>
-    <p th:text="${blogpost.content}"></p>
-    <span th:text="${blogpost.created}"></span>
+<header>
+    <h2 class="title">Kristoffers blogprojekt</h2>
+</header>
+<section id="main-content">
+    <div th:each="blogpost: ${blogs}" class="content-div">
+        <h1 th:text="${blogpost.title}"></h1>
+        <p th:text="${blogpost.content}"></p>
+        <span th:text="${blogpost.creator}"></span>
+        <span th:text="${blogpost.created}"></span>
 
-</div>
+    </div>
+</section>
+
+
 </body>
 
 </html>

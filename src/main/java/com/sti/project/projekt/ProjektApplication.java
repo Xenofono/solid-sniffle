@@ -2,6 +2,8 @@ package com.sti.project.projekt;
 
 import com.sti.project.projekt.blog.entities.BlogEntity;
 import com.sti.project.projekt.blog.repositories.BlogRepository;
+import com.thedeanda.lorem.Lorem;
+import com.thedeanda.lorem.LoremIpsum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -25,15 +27,17 @@ import java.util.stream.BaseStream;
 @SpringBootApplication
 public class ProjektApplication {
 
+    private Lorem lorem = LoremIpsum.getInstance();
+
     private List<BlogEntity> exampleBlogs = List.of(
-            new BlogEntity(null, "Kristoffer Näsström", generateLargeString(), LocalDateTime.of(2010, Month.JANUARY, 14, 13, 22)),
-            new BlogEntity(null, "Kalle Anka", generateLargeString(), LocalDateTime.now()),
-            new BlogEntity(null, "Gunde Svan", generateLargeString(), LocalDateTime.of(1987, Month.OCTOBER, 14, 13, 22)));
+            new BlogEntity(null, "Kristoffer Näsström", "Angående räkor", lorem.getWords(500), LocalDateTime.of(2010, Month.JANUARY, 14, 13, 22)),
+            new BlogEntity(null, "Kalle Anka", "Jäkla fiskmåsar", lorem.getWords(500), LocalDateTime.now()),
+            new BlogEntity(null, "Gunde Svan", "Varför frasses är bäst", lorem.getWords(500), LocalDateTime.of(1987, Month.OCTOBER, 14, 13, 22)));
+
 
     public static void main(String[] args) {
         SpringApplication.run(ProjektApplication.class, args);
     }
-
 
     @Bean
     public ApplicationRunner seeder(DatabaseClient client, BlogRepository repository) {
@@ -55,21 +59,14 @@ public class ProjektApplication {
         return Flux.fromIterable(exampleBlogs);
     }
 
-
-        private Mono<String> getSchema() throws URISyntaxException {
+    private Mono<String> getSchema() throws URISyntaxException {
         Path path = Paths.get(ClassLoader.getSystemResource("schema.sql").toURI());
         return Flux
                 .using(() -> Files.lines(path), Flux::fromStream, BaseStream::close)
                 .reduce((line1, line2) -> line1 + "\n" + line2);
     }
 
-    private String generateLargeString() {
-        StringBuilder returnValue = new StringBuilder();
-        for (int i = 0; i < 40; i++) {
-            returnValue.append(UUID.randomUUID().toString());
-        }
-        return returnValue.toString();
-    }
+
 
 
 }
