@@ -7,14 +7,22 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-<header>
-    <h1 class="title">Kristoffers bloggprojekt</h1>
-</header>
+<nav>
+    <div id="navbar">
+        <a th:href="@{/client}" >Kristoffers vackra bloggprojekt</a>
+        <div>
+            <a th:href="@{/client}" >knapp</a>
+            <a th:href="@{/client}" >knapp</a>
+            <a th:href="@{/client}" >knapp</a>
+            <a th:href="@{/client}" >knapp</a>
+        </div>
+    </div>
+</nav>
 <section id="main-content">
     <div th:each="blogpost: ${blogs}" class="content-div">
-        <h1 th:text="${blogpost.title}"></h1>
+        <h2 th:text="${blogpost.title}"></h2>
         <p th:text="${blogpost.content}"></p>
-        <em><span th:text="${blogpost.creator}" id="author"></span></em>
+        <em>Skriven av: <span th:text="${blogpost.creator}" id="author"></span></em>
         <span th:text="${blogpost.created}"></span>
 
     </div>
