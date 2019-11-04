@@ -30,10 +30,6 @@ public class ProjektApplication {
 
     private Lorem lorem = LoremIpsum.getInstance();
 
-    private List<BlogEntity> exampleBlogs = List.of(
-            new BlogEntity(null, "Kristoffer Näsström", "Angående räkor", lorem.getWords(500), LocalDateTime.of(2010, Month.JANUARY, 14, 13, 22)),
-            new BlogEntity(null, "Kalle Anka", "Jäkla fiskmåsar", lorem.getWords(500), LocalDateTime.now()),
-            new BlogEntity(null, "Gunde Svan", "Varför frasses är bäst", lorem.getWords(500), LocalDateTime.of(1987, Month.OCTOBER, 14, 13, 22)));
 
 
     public static void main(String[] args) {
