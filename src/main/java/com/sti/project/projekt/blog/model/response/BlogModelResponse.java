@@ -1,4 +1,4 @@
-package com.sti.project.projekt.model.response;
+package com.sti.project.projekt.blog.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

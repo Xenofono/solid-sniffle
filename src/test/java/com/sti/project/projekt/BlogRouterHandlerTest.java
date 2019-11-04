@@ -1,11 +1,8 @@
 package com.sti.project.projekt;
 
-import com.sti.project.projekt.entities.BlogEntity;
-import com.sti.project.projekt.model.request.BlogModelRequest;
-import com.sti.project.projekt.model.response.BlogModelResponse;
-import com.sti.project.projekt.repositories.BlogRepository;
+import com.sti.project.projekt.blog.model.request.BlogModelRequest;
+import com.sti.project.projekt.blog.model.response.BlogModelResponse;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +10,8 @@ import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWeb
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import org.springframework.transaction.annotation.Transactional;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 

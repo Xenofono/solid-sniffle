@@ -1,7 +1,6 @@
-package com.sti.project.projekt.entities;
+package com.sti.project.projekt.blog.entities;
 
 
-import io.r2dbc.spi.Clob;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

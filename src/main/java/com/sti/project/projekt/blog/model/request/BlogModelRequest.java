@@ -1,4 +1,4 @@
-package com.sti.project.projekt.model.request;
+package com.sti.project.projekt.blog.model.request;
 
 
 import lombok.Data;

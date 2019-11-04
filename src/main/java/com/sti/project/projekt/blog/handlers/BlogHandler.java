@@ -1,9 +1,9 @@
-package com.sti.project.projekt.handlers;
+package com.sti.project.projekt.blog.handlers;
 
-import com.sti.project.projekt.entities.BlogEntity;
-import com.sti.project.projekt.model.request.BlogModelRequest;
-import com.sti.project.projekt.model.response.BlogModelResponse;
-import com.sti.project.projekt.repositories.BlogRepository;
+import com.sti.project.projekt.blog.entities.BlogEntity;
+import com.sti.project.projekt.blog.model.request.BlogModelRequest;
+import com.sti.project.projekt.blog.model.response.BlogModelResponse;
+import com.sti.project.projekt.blog.repositories.BlogRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;

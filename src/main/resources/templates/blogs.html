@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kristoffers blog</title>
+</head>
+<body>
+<div th:each="blogpost: ${blogs}">
+    <h1 th:text="${blogpost.creator}"></h1>
+    <p th:text="${blogpost.content}"></p>
+    <span th:text="${blogpost.created}"></span>
+
+</div>
+</body>
+
+</html>

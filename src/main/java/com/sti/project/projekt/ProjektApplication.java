@@ -1,7 +1,7 @@
 package com.sti.project.projekt;
 
-import com.sti.project.projekt.entities.BlogEntity;
-import com.sti.project.projekt.repositories.BlogRepository;
+import com.sti.project.projekt.blog.entities.BlogEntity;
+import com.sti.project.projekt.blog.repositories.BlogRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
