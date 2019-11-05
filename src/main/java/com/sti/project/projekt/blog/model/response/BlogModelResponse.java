@@ -12,8 +12,18 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class BlogModelResponse {
 
+    private long id;
     private String creator;
     private String title;
     private String content;
     private LocalDateTime created;
+
+    private String contentSummary;
+
+    public BlogModelResponse(String creator, String title, String content, LocalDateTime created) {
+        this.creator = creator;
+        this.title = title;
+        this.content = content;
+        this.created = created;
+    }
 }

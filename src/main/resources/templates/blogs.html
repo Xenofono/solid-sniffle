@@ -1,30 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Kristoffers blog</title>
-    <link th:href="@{/css/styles.css}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-</head>
+<head th:replace="fragments/head :: head"></head>
 <body>
-<nav>
-    <div id="navbar">
-        <a th:href="@{/client}" >Kristoffers vackra bloggprojekt</a>
-        <div>
-            <a th:href="@{/client}" >knapp</a>
-            <a th:href="@{/client}" >knapp</a>
-            <a th:href="@{/client}" >knapp</a>
-            <a th:href="@{/client}" >knapp</a>
-        </div>
-    </div>
-</nav>
+<nav th:replace="fragments/navbar :: navbar"></nav>
 <section id="main-content">
     <div th:each="blogpost: ${blogs}" class="content-div">
+    <a th:href="@{/client/} + ${blogpost.id}" class="content-anchor">
+
         <h2 th:text="${blogpost.title}"></h2>
-        <p th:text="${blogpost.content}"></p>
+        <p th:text="${blogpost.contentSummary}"></p>
         <em>Skriven av: <span th:text="${blogpost.creator}" id="author"></span></em>
         <span th:text="${blogpost.created}"></span>
 
+
+    </a>
     </div>
 </section>
 

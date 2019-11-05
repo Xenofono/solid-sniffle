@@ -31,6 +31,7 @@ public class BlogHandler {
         Flux<BlogModelResponse> allResponses = blogRepository.findAll().map(entity -> {
             BlogModelResponse response = new BlogModelResponse();
             BeanUtils.copyProperties(entity, response);
+            response.setContentSummary(response.getContent().substring(0, 125)+"...");
             return response;
         });
 

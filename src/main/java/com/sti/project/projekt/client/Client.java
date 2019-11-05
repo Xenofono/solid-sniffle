@@ -23,7 +23,7 @@ public class Client {
         IReactiveDataDriverContextVariable reactiveContext = new ReactiveDataDriverContextVariable(
                 webClient.get().uri("/")
                 .retrieve()
-                .bodyToFlux(BlogModelResponse.class));
+                .bodyToFlux(BlogModelResponse.class).log("Loading: "));
 
         model.addAttribute("blogs", reactiveContext);
 
@@ -37,9 +37,9 @@ public class Client {
                         .retrieve()
                         .bodyToFlux(BlogModelResponse.class));
 
-        model.addAttribute("blogs", reactiveContext);
+        model.addAttribute("blog", reactiveContext);
 
-        return "blogs";
+        return "blog";
     }
 
 
