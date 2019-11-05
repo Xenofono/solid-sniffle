@@ -3,8 +3,10 @@
     justify-content: center;
 
     margin: 30px;
-    padding: 10px;
+    padding: 20px;
     background: white;
+    border: 1px solid lightgray;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 input {
@@ -13,17 +15,19 @@ input {
 }
 
 
+
 .inputfield {
-    width: 90%;
+    width: 100%;
     height: 24px;
     padding: 5px;
     font-size: 20px;
     margin-right: 5px;
+
 }
 
 textarea{
     border-radius: 5px;
-    width: 90%;
+    width: 100%;
     height: 100px;
     padding: 5px;
 }
@@ -33,8 +37,8 @@ textarea{
     height: 36px;
     position: relative;
     outline: none;
-    background-color: #0f0fda;
-    color: white;
+    background-color: floralwhite;
+    color: black;
     text-transform: uppercase;
     letter-spacing: 2px;
     box-shadow: 0 6px #9eac9a;
