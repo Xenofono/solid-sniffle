@@ -17,6 +17,7 @@ import org.thymeleaf.spring5.context.webflux.ReactiveDataDriverContextVariable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -29,8 +30,8 @@ public class Client {
     public String getAllBlogs(Model model) {
         IReactiveDataDriverContextVariable reactiveContext = new ReactiveDataDriverContextVariable(
                 webClient.get().uri("/")
-                .retrieve()
-                .bodyToFlux(BlogModelResponse.class));
+                        .retrieve()
+                        .bodyToFlux(BlogModelResponse.class));
 
         model.addAttribute("blogs", reactiveContext);
 
@@ -57,15 +58,14 @@ public class Client {
 
     @PostMapping("/postblog")
     public String createNew(@ModelAttribute BlogModelRequest newBlog) {
-        System.out.println(newBlog);
+        newBlog.setCreated(LocalDateTime.now());
         webClient.post().uri("/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(newBlog), BlogModelRequest.class)
                 .retrieve()
                 .bodyToMono(BlogModelResponse.class)
-                .log("Saved item: ");
-
-
+                .log("Saved item: ")
+                 .subscribe();
         return "redirect:/client";
 
 

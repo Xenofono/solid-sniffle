@@ -32,7 +32,12 @@ public class BlogHandler {
         Flux<BlogModelResponse> allResponses = blogRepository.findAll().map(entity -> {
             BlogModelResponse response = new BlogModelResponse();
             BeanUtils.copyProperties(entity, response);
-            response.setContentSummary(response.getContent().substring(0, 125)+"...");
+            if(response.getContent().length()>= 125){
+                response.setContentSummary(response.getContent().substring(0, 125)+"...");
+            }
+            else{
+                response.setContentSummary(response.getContent());
+            }
             return response;
         });
 
@@ -62,7 +67,6 @@ public class BlogHandler {
 
     public Mono<ServerResponse> createNewBlog(ServerRequest request) {
         Mono<BlogEntity> newEntity = request.bodyToMono(BlogEntity.class);
-
         return newEntity.flatMap(savedItem -> {
             savedItem.setCreated(LocalDateTime.now());
             return ServerResponse.ok()
