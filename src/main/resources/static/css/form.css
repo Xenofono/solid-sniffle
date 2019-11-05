@@ -1,0 +1,52 @@
+#form-container {
+    display: flex;
+    justify-content: center;
+
+    margin: 30px;
+    padding: 10px;
+    background: white;
+}
+
+input {
+    border-radius: 5px;
+    outline: none;
+}
+
+
+.inputfield {
+    width: 90%;
+    height: 24px;
+    padding: 5px;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+textarea{
+    border-radius: 5px;
+    width: 90%;
+    height: 100px;
+    padding: 5px;
+}
+
+.button {
+    width: 100px;
+    height: 36px;
+    position: relative;
+    outline: none;
+    background-color: #0f0fda;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 6px #9eac9a;
+    border: none;
+}
+
+.button:hover {
+    top: 2px;
+    box-shadow: 0 4px #9eac9a;
+}
+
+.button:active {
+    top: 6px;
+    box-shadow: none;
+}

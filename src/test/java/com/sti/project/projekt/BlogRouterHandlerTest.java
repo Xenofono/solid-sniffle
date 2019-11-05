@@ -62,7 +62,7 @@ public class BlogRouterHandlerTest {
 
     @Test
     public void createBlog__successful(){
-        BlogModelRequest request = new BlogModelRequest("Bara Testar", "lalalallala");
+        BlogModelRequest request = new BlogModelRequest("Bara Testar", "testi", "lalalallala");
 
         webTestClient.post().uri("/")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -79,7 +79,7 @@ public class BlogRouterHandlerTest {
 
     @Test
     public void createBlog__notEqual(){
-        BlogModelRequest request = new BlogModelRequest("Bara Testar", "lalalallala");
+        BlogModelRequest request = new BlogModelRequest("Bara Testar", "testi", "lalalallala");
 
         webTestClient.post().uri("/")
                 .contentType(MediaType.APPLICATION_JSON)

@@ -14,6 +14,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 
 @Component
 public class BlogHandler {
@@ -34,6 +35,8 @@ public class BlogHandler {
             response.setContentSummary(response.getContent().substring(0, 125)+"...");
             return response;
         });
+
+        allResponses = allResponses.sort(Comparator.comparing(BlogModelResponse::getId).reversed());
 
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)

@@ -2,12 +2,14 @@ package com.sti.project.projekt.blog.model.request;
 
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Data
+@NoArgsConstructor
 public class BlogModelRequest {
 
     @NotNull(message = "Creator can't be null")
@@ -19,8 +21,9 @@ public class BlogModelRequest {
     private String content;
     private LocalDateTime created;
 
-    public BlogModelRequest(String creator, String content) {
+    public BlogModelRequest(String creator, String title, String content) {
         this.creator = creator;
+        this.title = title;
         this.content = content;
         this.created = LocalDateTime.now();
     }

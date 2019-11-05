@@ -6,38 +6,6 @@ body{
     background: linear-gradient(to right, #0ED2F7, #B2FEFA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-
-#navbar{
-    padding-top: 10px;
-    padding-bottom: 5px;
-    background-color: floralwhite;
-    display: flex;
-}
-#navbar > a{
-    margin-left: 10px;
-    font-size: 1.4rem;
-    color: black;
-    text-decoration: none;
-}
-
-#navbar div {
-    margin-left: auto;
-    width: 60%;
-    display: inline-flex;
-    justify-content: flex-end;
-}
-#navbar div a {
-    margin-right: 5%;
-    font-size: 1.2rem;
-    color: black;
-    text-decoration: none;
-}
-
-#navbar a:hover {
-    color: slategray;
-    border-bottom: 1px solid blue;
-    opacity: 1;
-}
 #main-content{
     display: flex;
     flex-direction: column;

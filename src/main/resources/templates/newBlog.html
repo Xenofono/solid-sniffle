@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+<section id="main-content">
+    <div id="form-container">
+        <form action="#" th:action="@{/postblog}" th:object="${formblog}" method="post">
+            <h3>Skapa ny blogg</h3>
+            <span>Författare: </span>
+            <input type="text" name="creator" class="inputfield" th:field="*{creator}">
+            <span>Titel: </span>
+            <input type="text" name="title" class="inputfield" th:field="*{title}">
+            <span>Innehåll: </span>
+            <textarea></textarea>
+            <input type="submit" value="Spara" class="button" th:field="*{content}">
+        </form>
+    </div>
+
+</section>
+
+
+</body>
+
+</html>
