@@ -28,6 +28,7 @@ public class BlogHandler {
     }
 
     public Mono<ServerResponse> getAllBlogPosts(ServerRequest request) {
+        System.out.println("HEJ");
 
         Flux<BlogModelResponse> allResponses = blogRepository.findAll().map(entity -> {
             BlogModelResponse response = new BlogModelResponse();
@@ -39,7 +40,8 @@ public class BlogHandler {
                 response.setContentSummary(response.getContent());
             }
             return response;
-        });
+        }).log("retrieving: ");
+        System.out.println("HEJDÅÅÅ");
 
         allResponses = allResponses.sort(Comparator.comparing(BlogModelResponse::getId).reversed());
 
@@ -52,6 +54,7 @@ public class BlogHandler {
     public Mono<ServerResponse> getBlogById(ServerRequest request) {
         Long id = Long.parseLong(request.pathVariable("id"));
         System.out.println("HOHOHPO");
+        
         return blogRepository.findById(id).flatMap(entity -> {
             BlogModelResponse response = new BlogModelResponse();
             BeanUtils.copyProperties(entity, response);
@@ -67,6 +70,7 @@ public class BlogHandler {
 
     public Mono<ServerResponse> createNewBlog(ServerRequest request) {
         Mono<BlogEntity> newEntity = request.bodyToMono(BlogEntity.class);
+        System.out.println(newEntity);
         return newEntity.flatMap(savedItem -> {
             savedItem.setCreated(LocalDateTime.now());
             return ServerResponse.ok()
