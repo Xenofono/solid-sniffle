@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class BlogEntity {
 
     @Id
-    private Long Id;
+    private Long id;
     private String creator;
     private String title;
     private String content;

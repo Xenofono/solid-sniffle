@@ -15,11 +15,11 @@ public class PostgresConfig extends AbstractR2dbcConfiguration {
     public ConnectionFactory connectionFactory() {
         return new PostgresqlConnectionFactory(
                 PostgresqlConnectionConfiguration.builder()
-                        .host("ec2-54-235-114-242.compute-1.amazonaws.com")
+                        .host("localhost")
                         .port(5432)
-                        .username("uayhdvkogsfifx")
-                        .password("4c03761bbd0d9489fef07279998a8880d3728cdc03470d94a09e95ffdf89a66c")
-                        .database("d4nkkkou00kpb2")
+                        .username("postgres")
+                        .password("grth12")
+                        .database("java1project")
                         .build());
     }
 }
