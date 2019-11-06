@@ -1,14 +1,5 @@
 spring:
   datasource:
-    url: r2dbc:h2:mem:projectdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
-    platform: h2
-
-  # enable H2 web console and set url for web console
-  # http://localhost:8080/h2-console
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+    url: r2dbc:postgres://ec2-54-235-114-242.compute-1.amazonaws.com:5432/d4nkkkou00kpb2
+    username: uayhdvkogsfifx
+    password: 4c03761bbd0d9489fef07279998a8880d3728cdc03470d94a09e95ffdf89a66c
