@@ -30,6 +30,9 @@ public class BlogHandler {
     public Mono<ServerResponse> getAllBlogPosts(ServerRequest request) {
 
         Flux<BlogModelResponse> allResponses = blogRepository.findAll().map(entity -> {
+            System.out.println(entity);
+            System.out.println(entity);
+            System.out.println(entity);
             BlogModelResponse response = new BlogModelResponse();
             BeanUtils.copyProperties(entity, response);
             if(response.getContent().length()>= 125){
