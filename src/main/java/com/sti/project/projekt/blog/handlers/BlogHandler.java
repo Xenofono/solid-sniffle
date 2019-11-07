@@ -52,7 +52,7 @@ public class BlogHandler {
     }
 
     public Mono<ServerResponse> getBlogById(ServerRequest request) {
-        Long id = Long.parseLong(request.pathVariable("id"));
+        String id = request.pathVariable("id");
         System.out.println("HOHOHPO");
         
         return blogRepository.findById(id).flatMap(entity -> {
@@ -82,7 +82,7 @@ public class BlogHandler {
     }
 
     public Mono<ServerResponse> deleteBlogById(ServerRequest request) {
-        Long id = Long.parseLong(request.pathVariable("id"));
+        String id = request.pathVariable("id");
         Mono<Void> deletedBlog = blogRepository.deleteById(id);
 
         return ServerResponse.ok()
@@ -92,7 +92,7 @@ public class BlogHandler {
     }
 
     public Mono<ServerResponse> updateById(ServerRequest request) {
-        Long id = Long.parseLong(request.pathVariable("id"));
+        String id = request.pathVariable("id");
 
         Mono<BlogModelRequest> newBlogDetails = request.bodyToMono(BlogModelRequest.class);
 

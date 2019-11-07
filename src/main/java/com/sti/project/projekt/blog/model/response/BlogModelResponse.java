@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class BlogModelResponse {
 
-    private long id;
+    private String id;
     private String creator;
     private String title;
     private String content;
