@@ -21,6 +21,5 @@ public class BlogEntity {
     private String creator;
     private String title;
     private String content;
-    @CreatedDate
     private LocalDateTime created;
 }

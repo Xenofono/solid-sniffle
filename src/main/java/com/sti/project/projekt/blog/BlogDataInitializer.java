@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@Profile({"!test"})
+@Profile({"!dev"})
 @Slf4j
 public class BlogDataInitializer implements CommandLineRunner {
 
