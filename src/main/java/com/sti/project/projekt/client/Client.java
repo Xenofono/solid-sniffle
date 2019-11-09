@@ -20,6 +20,9 @@ import reactor.core.publisher.Mono;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * The type Client.
+ */
 @Controller
 public class Client {
 

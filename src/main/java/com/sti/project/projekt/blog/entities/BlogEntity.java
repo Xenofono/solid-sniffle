@@ -4,12 +4,15 @@ package com.sti.project.projekt.blog.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
+/**
+ * The type Blog entity. It represents the java object to be saved in the mongo database.
+ * @Author Kristoffer Näsström
+ */
 @Document
 @Data
 @NoArgsConstructor
