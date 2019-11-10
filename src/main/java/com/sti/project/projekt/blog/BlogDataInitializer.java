@@ -14,8 +14,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Blog data initializer.
+ */
 @Component
-@Profile({"!test"})
+@Profile({"!dev"})
 @Slf4j
 public class BlogDataInitializer implements CommandLineRunner {
 

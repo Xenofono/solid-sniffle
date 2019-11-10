@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+/**
+ * The response model that will be returned by HTTP.
+ * @Author Kristoffer Näsström
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -8,6 +8,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
+/**
+ * The request model that will be accepted in the HTTP-requestbody. If it passes validation is will create a BlogEntity.
+ * @Author Kristoffer Näsström
+ */
 @Data
 @NoArgsConstructor
 public class BlogModelRequest {
