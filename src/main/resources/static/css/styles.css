@@ -1,0 +1,47 @@
+body{
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #B2FEFA;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0ED2F7, #B2FEFA);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0ED2F7, #B2FEFA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#main-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.content-div{
+    background-color: floralwhite;
+    border-radius: 5px;
+    border: 1px solid gray;
+    width: 50%;
+    padding-bottom: 5%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.content-div a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.content-div h2{
+    letter-spacing: 3px;
+    font-weight: lighter;
+    color: slategray;
+}
+
+.content-div p {
+    font-size: 19px;
+}
+
+
+
+#author{
+}

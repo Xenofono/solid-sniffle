@@ -1,0 +1,37 @@
+#navbar{
+    padding-top: 10px;
+    padding-bottom: 5px;
+    background-color: floralwhite;
+    display: flex;
+}
+#navbar > a{
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+#navbar > a p{
+    font-size: 1.3rem;
+    color: black;
+
+    letter-spacing: 5px;
+    font-weight: 300;
+}
+
+#navbar div {
+    margin-left: auto;
+    width: 60%;
+    display: inline-flex;
+    justify-content: flex-end;
+}
+#navbar div a {
+    margin-right: 5%;
+    font-size: 1.2rem;
+    color: black;
+    text-decoration: none;
+}
+
+#navbar p:hover {
+    color: slategray;
+    border-bottom: 1px solid blue;
+    opacity: 1;
+}
