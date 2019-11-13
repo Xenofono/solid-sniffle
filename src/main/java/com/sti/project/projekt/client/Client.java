@@ -74,5 +74,17 @@ public class Client {
 
     }
 
+    @GetMapping("/client/update/{id}")
+    public String updateBlog(@PathVariable String id,Model model){
+        IReactiveDataDriverContextVariable reactiveContext = new ReactiveDataDriverContextVariable(
+                webClient.get().uri("/{id}", id)
+                .retrieve()
+                .bodyToMono(BlogModelResponse.class)
+        );
+        model.addAttribute("updateBlog", reactiveContext);
+
+        return "updateBlog";
+    }
+
 
 }
