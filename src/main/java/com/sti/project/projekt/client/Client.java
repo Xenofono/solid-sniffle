@@ -6,10 +6,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.thymeleaf.spring5.context.webflux.IReactiveDataDriverContextVariable;
@@ -26,7 +23,7 @@ import java.util.List;
 @Controller
 public class Client {
 
-    private WebClient webClient = WebClient.create("https://cryptic-savannah-22712.herokuapp.com/api");
+    private WebClient webClient = WebClient.create("http://localhost:8080/api");
 
 
     @GetMapping("/client")
@@ -78,12 +75,27 @@ public class Client {
     public String updateBlog(@PathVariable String id,Model model){
         IReactiveDataDriverContextVariable reactiveContext = new ReactiveDataDriverContextVariable(
                 webClient.get().uri("/{id}", id)
-                .retrieve()
-                .bodyToMono(BlogModelResponse.class)
-        );
-        model.addAttribute("updateBlog", reactiveContext);
+                        .retrieve()
+                        .bodyToFlux(BlogModelResponse.class));
+        System.out.println(id);
+
+        model.addAttribute("oldBlogs", reactiveContext);
 
         return "updateBlog";
+    }
+
+    @PostMapping("/updateblog/{id}")
+    public String updateSend(@ModelAttribute BlogModelRequest updatedBlog, @PathVariable String id) {
+        System.out.println(updatedBlog);
+        webClient.put().uri("/{id}", id)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(Mono.just(updatedBlog), BlogModelRequest.class)
+                .retrieve()
+                .bodyToMono(BlogModelResponse.class)
+                .log("Updated: ")
+                .subscribe();
+
+        return "redirect:/client/"+id;
     }
 
 
