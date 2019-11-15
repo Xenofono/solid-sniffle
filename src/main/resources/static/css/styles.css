@@ -1,12 +1,10 @@
 body{
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    background: #B2FEFA;
-    background: -webkit-linear-gradient(to right, #0ED2F7, #B2FEFA);
-    background: linear-gradient(to right, #0ED2F7, #B2FEFA);
+    background: #B2FEFA;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0ED2F7, #B2FEFA);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0ED2F7, #B2FEFA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-
-
 
 #main-content{
     display: flex;
@@ -27,7 +25,7 @@ body{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.content-div a {
+.content-div .content-anchor {
     text-decoration: none;
     color: black;
 }
@@ -43,3 +41,22 @@ body{
     font-size: 19px;
 }
 
+.content-div .bloganchor {
+
+    background-color: floralwhite;
+    color: black;
+    box-shadow: 0 5px 0 darkred;
+    padding: 1em 1.5em;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.content-div .bloganchor:hover {
+    background-color: #ce0606;
+}
+
+.content-div .bloganchor:active {
+    box-shadow: none;
+    top: 5px;
+}

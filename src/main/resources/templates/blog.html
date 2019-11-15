@@ -11,9 +11,9 @@
                 <em>Skriven av: <span th:text="${blogpost.creator}" id="author"></span></em>
                 <span th:text="${blogpost.created}"></span>
             </div>
-
-        <a  th:href="@{/client/update/} + ${blogpost.id}">UPDATE</a>
-        <a  th:href="@{/client/delete/} + ${blogpost.id}">DELETE</a>
+        <br>
+        <a class="bloganchor"  th:href="@{/client/update/} + ${blogpost.id}">UPDATE</a>
+        <a class="bloganchor"  th:href="@{/client/delete/} + ${blogpost.id}">DELETE</a>
 
 
     </div>
