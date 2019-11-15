@@ -81,6 +81,7 @@ public class Client {
 
         model.addAttribute("oldBlogs", reactiveContext);
 
+
         return "updateBlog";
     }
 
@@ -96,6 +97,15 @@ public class Client {
                 .subscribe();
 
         return "redirect:/client/"+id;
+    }
+
+    @GetMapping("/client/delete/{id}")
+    public String deleteById(@PathVariable String id){
+        webClient.delete().uri("/{id}", id)
+                .retrieve()
+        .bodyToMono(Void.class).log("Deleted: ").subscribe();
+
+        return "redirect:/client";
     }
 
 

@@ -1,10 +1,12 @@
 body{
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    background: #B2FEFA;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #0ED2F7, #B2FEFA);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #0ED2F7, #B2FEFA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #B2FEFA;
+    background: -webkit-linear-gradient(to right, #0ED2F7, #B2FEFA);
+    background: linear-gradient(to right, #0ED2F7, #B2FEFA);
 }
+
+
 
 #main-content{
     display: flex;
@@ -41,7 +43,3 @@ body{
     font-size: 19px;
 }
 
-
-
-#author{
-}

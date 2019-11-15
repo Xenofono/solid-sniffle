@@ -138,9 +138,13 @@ public class BlogHandler {
         Mono<BlogModelRequest> newBlogDetails = request.bodyToMono(BlogModelRequest.class);
 
         Mono<BlogEntity> updatedBlog = newBlogDetails.flatMap(newItem -> blogRepository.findById(id).flatMap(oldItem -> {
-            oldItem.setCreator(newItem.getCreator());
-            oldItem.setContent(newItem.getContent());
-            return blogRepository.save(oldItem);
+            if(newItem.getContent() != null && newItem.getCreator() != null && newItem.getTitle() != null){
+                oldItem.setCreator(newItem.getCreator());
+                oldItem.setContent(newItem.getContent());
+                oldItem.setTitle(newItem.getTitle());
+                return blogRepository.save(oldItem);
+            }
+            return blogRepository.findById(id);
         }));
         return updatedBlog.flatMap(blog -> ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
