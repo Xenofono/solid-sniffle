@@ -5,6 +5,8 @@ import com.sti.project.projekt.blog.model.request.BlogModelRequest;
 import com.sti.project.projekt.blog.model.response.BlogModelResponse;
 import com.sti.project.projekt.blog.repositories.BlogRepository;
 import org.springframework.beans.BeanUtils;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -43,10 +45,7 @@ public class BlogHandler {
      * @return all blog posts
      */
     public Mono<ServerResponse> getAllBlogPosts(ServerRequest request) {
-
-        Flux<BlogModelResponse> allResponses = blogRepository.findAll().map(entity -> {
-            System.out.println(entity);
-            System.out.println(entity);
+        Flux<BlogModelResponse> allResponses = blogRepository.findAll(Sort.by(Sort.Direction.DESC, "id")).map(entity -> {
             System.out.println(entity);
             BlogModelResponse response = new BlogModelResponse();
             BeanUtils.copyProperties(entity, response);
@@ -58,9 +57,6 @@ public class BlogHandler {
             }
             return response;
         }).log("retrieving: ");
-        System.out.println("HEJDÅÅÅ");
-
-        allResponses = allResponses.sort(Comparator.comparing(BlogModelResponse::getId).reversed());
 
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
