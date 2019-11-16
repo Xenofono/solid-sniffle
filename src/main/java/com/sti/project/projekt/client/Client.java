@@ -27,7 +27,7 @@ public class Client {
 
 
     @GetMapping("/client")
-    public String getAllBlogs(Model model) {
+    public Mono<String> getAllBlogs(Model model) {
         IReactiveDataDriverContextVariable reactiveContext = new ReactiveDataDriverContextVariable(
                 webClient.get().uri("/")
                         .retrieve()
@@ -35,11 +35,11 @@ public class Client {
 
         model.addAttribute("blogs", reactiveContext);
 
-        return "blogs";
+        return Mono.just("blogs");
     }
 
     @GetMapping("/client/{id}")
-    public String getBlogById(@PathVariable String id, Model model) {
+    public Mono<String> getBlogById(@PathVariable String id, Model model) {
         IReactiveDataDriverContextVariable reactiveContext = new ReactiveDataDriverContextVariable(
                 webClient.get().uri("/{id}", id)
                         .retrieve()
@@ -47,7 +47,7 @@ public class Client {
 
         model.addAttribute("blog", reactiveContext);
 
-        return "blog";
+        return Mono.just("blog");
     }
 
     @GetMapping("/client/new")
@@ -69,7 +69,7 @@ public class Client {
     }
 
     @GetMapping("/client/update/{id}")
-    public String updateBlog(@PathVariable String id,Model model){
+    public Mono<String> updateBlog(@PathVariable String id,Model model){
         IReactiveDataDriverContextVariable reactiveContext = new ReactiveDataDriverContextVariable(
                 webClient.get().uri("/{id}", id)
                         .retrieve()
@@ -80,7 +80,7 @@ public class Client {
         model.addAttribute("updatedBlog", new BlogModelRequest());
 
 
-        return "updateBlog";
+        return Mono.just("updateBlog");
     }
 
     @PostMapping("/updateblog/{id}")
