@@ -74,11 +74,9 @@ public class Client {
                 webClient.get().uri("/{id}", id)
                         .retrieve()
                         .bodyToFlux(BlogModelResponse.class));
-        System.out.println(id);
 
         model.addAttribute("oldBlogs", reactiveContext);
         model.addAttribute("updatedBlog", new BlogModelRequest());
-
 
         return Mono.just("updateBlog");
     }

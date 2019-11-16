@@ -6,23 +6,23 @@
 <section id="main-content">
     <div th:each="oldBlog : ${oldBlogs}"  id="form-container">
 
-            <form  action="#" th:action="@{/updateblog/} + ${oldBlog.id}"   method="post">
-                <h3>Ändra blogg</h3>
-                <span>Författare: </span>
-                <input type="text" name="creator" class="inputfield" th:value="${oldBlog.creator}"  >
-                <span>Titel: </span>
-                <input type="text" name="title" class="inputfield" th:value="${oldBlog.title}"  >
-                <span>Innehåll: </span>
-                <textarea  th:text="${oldBlog.content}" th:value="${oldBlog.content}" ></textarea>
-                <input type="submit" value="Spara" class="button">
-            </form>
+<!--            <form  action="#" th:action="@{/updateblog/} + ${oldBlog.id}"   method="post">-->
+<!--                <h3>Ändra blogg</h3>-->
+<!--                <span>Författare: </span>-->
+<!--                <input type="text" name="creator" class="inputfield" th:value="${oldBlog.creator}"  >-->
+<!--                <span>Titel: </span>-->
+<!--                <input type="text" name="title" class="inputfield" th:value="${oldBlog.title}"  >-->
+<!--                <span>Innehåll: </span>-->
+<!--                <div contenteditable="true" th:value="${oldBlog.content}">[[${oldBlog.content}]]</div>-->
+<!--                <input type="submit" value="Spara" class="button">-->
+<!--            </form>-->
 
         <form  action="#" th:action="@{/updateblog/} + ${oldBlog.id}" th:object="${updatedBlog}"    method="post">
             <h3>Ändra blogg</h3>
             <span>Författare: </span>
-            <input type="text" name="creator" class="inputfield" th:field="*{creator}"  >
+            <input type="text" name="creator" class="inputfield"  th:value="${oldBlog.creator}" >
             <span>Titel: </span>
-            <input type="text" name="title" class="inputfield" th:field="*{title}" th:value="${oldBlog.title}"  >
+            <input type="text" name="title" class="inputfield" th:value="${oldBlog.title}"  >
             <span>Innehåll: </span>
             <textarea th:field="*{content}" th:text="${oldBlog.content}"></textarea>
             <input type="submit" value="Spara" class="button">
