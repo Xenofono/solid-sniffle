@@ -41,10 +41,30 @@ body{
     font-size: 19px;
 }
 
-.content-div .bloganchor {
+.content-div #updatebutton {
 
-    background-color: floralwhite;
-    color: black;
+    background-color: blue;
+    color: white;
+    box-shadow: 0 5px 0 darkblue;
+    padding: 1em 1.5em;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.content-div #updatebutton:hover {
+    background-color: #110bce;
+}
+
+.content-div #updatebutton:active {
+    box-shadow: none;
+    top: 5px;
+}
+
+.content-div #deletebutton {
+
+    background-color: red;
+    color: white;
     box-shadow: 0 5px 0 darkred;
     padding: 1em 1.5em;
     position: relative;
@@ -52,11 +72,11 @@ body{
     text-transform: uppercase;
 }
 
-.content-div .bloganchor:hover {
+.content-div #deletebutton:hover {
     background-color: #ce0606;
 }
 
-.content-div .bloganchor:active {
+.content-div #deletebutton:active {
     box-shadow: none;
     top: 5px;
 }

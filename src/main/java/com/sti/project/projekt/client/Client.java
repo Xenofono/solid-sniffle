@@ -57,17 +57,14 @@ public class Client {
     }
 
     @PostMapping("/postblog")
-    public String createNew(@ModelAttribute BlogModelRequest newBlog) {
+    public Mono<String> createNew(@ModelAttribute BlogModelRequest newBlog) {
         newBlog.setCreated(LocalDateTime.now());
-        webClient.post().uri("/")
+        return webClient.post().uri("/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(newBlog), BlogModelRequest.class)
                 .retrieve()
                 .bodyToMono(BlogModelResponse.class)
-                .log("Saved item: ")
-                 .subscribe();
-        return "redirect:/client";
-
+                .map(redirectBlog -> "redirect:/client/" + redirectBlog.getId());
 
     }
 

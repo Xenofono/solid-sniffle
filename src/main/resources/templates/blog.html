@@ -12,8 +12,8 @@
                 <span th:text="${blogpost.created}"></span>
             </div>
         <br>
-        <a class="bloganchor"  th:href="@{/client/update/} + ${blogpost.id}">UPDATE</a>
-        <a class="bloganchor"  th:href="@{/client/delete/} + ${blogpost.id}">DELETE</a>
+        <a id="updatebutton"  th:href="@{/client/update/} + ${blogpost.id}">UPDATE</a>
+        <a id="deletebutton"  th:href="@{/client/delete/} + ${blogpost.id}">DELETE</a>
 
 
     </div>
