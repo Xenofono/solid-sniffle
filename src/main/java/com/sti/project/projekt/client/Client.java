@@ -77,23 +77,23 @@ public class Client {
         System.out.println(id);
 
         model.addAttribute("oldBlogs", reactiveContext);
+        model.addAttribute("updatedBlog", new BlogModelRequest());
 
 
         return "updateBlog";
     }
 
     @PostMapping("/updateblog/{id}")
-    public String updateSend(@ModelAttribute BlogModelRequest updatedBlog, @PathVariable String id) {
+    public Mono<String> updateSend(@ModelAttribute BlogModelRequest updatedBlog, @PathVariable String id) {
         System.out.println(updatedBlog);
-        webClient.put().uri("/{id}", id)
+        return webClient.put().uri("/{id}", id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(updatedBlog), BlogModelRequest.class)
                 .retrieve()
                 .bodyToMono(BlogModelResponse.class)
                 .log("Updated: ")
-                .subscribe();
+                .map(updated -> "redirect:/client/"+id);
 
-        return "redirect:/client/"+id;
     }
 
     @GetMapping("/client/delete/{id}")
