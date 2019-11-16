@@ -23,7 +23,7 @@ import java.util.List;
 @Controller
 public class Client {
 
-    private WebClient webClient = WebClient.create("http://localhost:8080/api");
+    private WebClient webClient = WebClient.create("https://cryptic-savannah-22712.herokuapp.com/api");
 
 
     @GetMapping("/client")
