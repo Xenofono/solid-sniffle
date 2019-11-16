@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: prod
+---
+spring:
+  profiles: prod
+  data:
+    mongodb:
+      uri: mongodb://kristoffer:grth12@ds243518.mlab.com:43518/javablog?retryWrites=false
+---
+spring:
+  profiles: dev
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: local
