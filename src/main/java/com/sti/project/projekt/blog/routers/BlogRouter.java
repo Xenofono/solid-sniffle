@@ -11,7 +11,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 
 /**
- * The type Blog router.
+ * Restcontroller that handles the normal HTTP-verbs
  * @Author Kristoffer Näsström
  */
 @Configuration

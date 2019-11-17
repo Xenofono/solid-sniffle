@@ -147,6 +147,7 @@ public class BlogRouterHandlerTest {
     public void updateBlog_success(){
         BlogModelRequest updateRequest = new BlogModelRequest();
         updateRequest.setCreator("Testy Mctest");
+        updateRequest.setTitle("New title");
         updateRequest.setContent("I'm just a test");
 
         LocalDateTime timeThatWontBeUpdated = LocalDateTime.of(1987, 10, 14, 1, 23);
