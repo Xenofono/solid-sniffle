@@ -3,6 +3,7 @@ package com.sti.project.projekt.client;
 import com.sti.project.projekt.blog.model.request.BlogModelRequest;
 import com.sti.project.projekt.blog.model.response.BlogModelResponse;
 import org.springframework.beans.BeanUtils;
+import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +24,25 @@ import java.util.List;
 @Controller
 public class Client {
 
-    private WebClient webClient = WebClient.create("http://localhost:8080/api");
+    private String env;
+    private WebClient webClient;
+
+    public Client() {
+        this.env = System.getProperty("os.name");
+        setEnvironment();
+    }
+
+    private void setEnvironment() {
+        System.out.println(this.env);
+        if(env.equalsIgnoreCase("Windows 10")){
+            webClient = WebClient.create("http://localhost:8080/api");
+        }
+        else{
+            webClient = WebClient.create("https://cryptic-savannah-22712.herokuapp.com/api");
+        }
+    }
+
+
 
 
     @GetMapping("/client")
